@@ -1,0 +1,26 @@
+{
+	"name": "系统清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"min_version": 1,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "临时文件",
+			"warning_level": 1,
+			"paths": [
+				{
+					"path": "C:\\Windows\\Temp\\",
+					"extension": "*"
+				},{
+					"path": "C:\\Users\\lenovo\\AppData\\Local\\Temp\\",
+					"extension": "*"
+				},{
+					"path": "C:\\Users\\lenovo\\AppData\\LocalLow\\Temp\\",
+					"extension": "*"
+				}
+			]
+		}
+	]
+}
