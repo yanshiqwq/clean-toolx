@@ -7,17 +7,23 @@
 	"platform": "windows",
 	"rules": [
 		{
-			"name": "临时文件",
+			"name": "Windows目录临时文件",
 			"warning_level": 1,
-			"paths": [
+			"folders": [
 				{
 					"path": "C:\\Windows\\Temp\\",
 					"extension": "*"
-				},{
-					"path": "C:\\Users\\lenovo\\AppData\\Local\\Temp\\",
+				}
+			]
+		},{
+			"name": "AppData目录临时文件",
+			"warning_level": 1,
+			"folders": [
+				{
+					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Temp\\",
 					"extension": "*"
 				},{
-					"path": "C:\\Users\\lenovo\\AppData\\LocalLow\\Temp\\",
+					"path": "C:\\Users\\${USERNAME}\\AppData\\LocalLow\\Temp\\",
 					"extension": "*"
 				}
 			]

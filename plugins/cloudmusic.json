@@ -1,0 +1,61 @@
+{
+	"name": "网易云清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"min_version": 1,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "网易云广告缓存",
+			"warning_level": 1,
+			"folders": [
+				{
+					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\ad\\",
+					"extension": ".mdat"
+				}
+			]
+		},{
+			"name": "网易云在线歌曲缓存",
+			"warning_level": 2,
+			"folders": [
+				{
+					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\",
+					"extension": "*"
+				}
+			]
+		},{
+			"name": "网易云DMP文件",
+			"warning_level": 1,
+			"folders": [
+				{
+					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\dumps",
+					"extension": ".dmp"
+				}
+			]
+		},{
+			"name": "网易云日志",
+			"warning_level": 1,
+			"folders": [
+				{
+					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\Log\\",
+					"extension": "*"
+				}
+			],
+			"files": [
+				"C:\\Users\\lenovo\\AppData\\Local\\Netease\\CloudMusic\\cloudmusic.log",
+				"C:\\Users\\lenovo\\AppData\\Local\\Netease\\CloudMusic\\install.log",
+				"C:\\Users\\lenovo\\AppData\\Local\\Netease\\CloudMusic\\web.log"
+			]
+		},{
+			"name": "网易云用户数据",
+			"warning_level": 4,
+			"folders": [
+				{
+					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
+					"extension": "*"
+				}
+			]
+		}
+	]
+}
