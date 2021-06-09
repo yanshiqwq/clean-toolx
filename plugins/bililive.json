@@ -1,19 +1,25 @@
 {
-	"name": "bililive清理",
+	"name": "B站投稿工具清理",
 	"author": "延时qwq",
 	"version_name": "v1.0",
 	"version_code": 1,
-	"min_version": 1,
 	"platform": "windows",
 	"rules": [
 		{
-			"name": "Url缓存",
-			"warning_level": 1,
+			"name": "B站投稿工具Url缓存",
+			"warning_level": 0,
 			"folders": [
 				{
-					"path": "C:\\Users\\lenovo\\AppData\\Local\\bililive\\User Data\\url_cache\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\url_cache\\",
 					"extension": "*"
 				}
+			]
+		},{
+			"name": "B站投稿工具日志",
+			"warning_level": 0,
+			"files": [
+				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\bililive_browser_debug.log",
+				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\bililive_debug.log"
 			]
 		}
 	]

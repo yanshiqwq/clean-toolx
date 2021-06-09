@@ -25,7 +25,7 @@ try:
 	logger = logging.getLogger(__name__)
 	print()
 	print("    #==================================#")
-	print("    |   clean-toolx v1.1 By @延时qwq   |")
+	print("    |   clean-toolx v1.1.1 By @延时qwq   |")
 	print("    #==================================#")
 	print()
 	if os.listdir("./plugins"):
@@ -62,9 +62,9 @@ try:
 					continue
 				print("")
 				for rule in plugin_config["rules"]:
-					logging.info("正在清理 " + rule["name"] + " ...")
+					logging.info("正在索引 " + rule["name"] + " ...")
 					path_list = []
-					try:
+					if "folders" in rule:
 						for folders in rule["folders"]:
 							path = folders["path"]
 							match = re.findall('\$\{.+\}', path)
@@ -74,13 +74,40 @@ try:
 							for root,dirs,names in os.walk(path):
 								for filename in names:
 									if os.path.splitext(os.path.join(root,filename))[-1].lower() == folders["extension"].lower() or folders["extension"] == "*":
+										try:
+											getsize(os.path.join(root,filename))
+										except FileNotFoundError as e:
+											continue
 										path_list.append(os.path.join(root,filename))
 										total_size = total_size + getsize(os.path.join(root,filename))
+					if "files" in rule:
 						for file in rule["files"]:
-							path_list.append(os.path.join(root,filename))
-							total_size = total_size + getsize(os.path.join(root,filename))
-					except:
-						pass
+							match = re.findall('\$\{.+\}', file)
+							if match != None:
+								for varible in match:
+									file = file.replace(varible, os.environ[varible[2: -1]])
+							try:
+								getsize(file)
+							except FileNotFoundError as e:
+								continue
+							path_list.append(file)
+							total_size = total_size + getsize(file)
+					if "excludes" in rule:
+						for exclude in rule["excludes"]:
+							match = re.findall('\$\{.+\}', exclude["path"])
+							if match != None:
+								for varible in match:
+									exclude["path"] = exclude["path"].replace(varible, os.environ[varible[2: -1]])
+							try:
+								if exclude["strict"] == False:
+									for path in path_list:
+										if exclude["path"] in path:
+											path_list.remove(path)
+								else:
+									path_list.remove(exclude["path"])
+							except ValueError:
+								pass
+							file_count = file_count - 1
 					file_count = len(path_list)
 					if file_count == 0:
 						logging.info("未检测到文件.\n")
@@ -91,10 +118,11 @@ try:
 					count = 0
 					for file_path in path_list:
 						try:
-							print("\t [" + convert_size(getsize(file_path)) + "]\t" + file_path)
+							filesize = convert_size(getsize(file_path))
+							print("\t [" + filesize + "]\t" + file_path)
 							count = count + 1
 						except FileNotFoundError:
-							del path_list[file_path]
+							path_list.remove(file_path)
 						if count >= 10:
 							print("\t  ......\t ......")
 							break
@@ -181,5 +209,9 @@ try:
 		logging.error("未检测到任何插件!")
 		sys.exit()
 except BaseException as e:
+	logging.info(e)
 	if isinstance(e, KeyboardInterrupt):
+		print("")
 		logging.error("进程终止!")
+except SystemExit as e:
+	logging.info("退出程序!")

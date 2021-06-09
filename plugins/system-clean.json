@@ -8,22 +8,22 @@
 	"rules": [
 		{
 			"name": "Windows目录临时文件",
-			"warning_level": 1,
+			"warning_level": 0,
 			"folders": [
 				{
-					"path": "C:\\Windows\\Temp\\",
+					"path": "${WINDIR}\\Temp\\",
 					"extension": "*"
 				}
 			]
 		},{
 			"name": "AppData目录临时文件",
-			"warning_level": 1,
+			"warning_level": 0,
 			"folders": [
 				{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Temp\\",
+					"path": "${TEMP}",
 					"extension": "*"
 				},{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\LocalLow\\Temp\\",
+					"path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\",
 					"extension": "*"
 				}
 			]

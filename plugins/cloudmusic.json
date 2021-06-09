@@ -8,28 +8,28 @@
 	"rules": [
 		{
 			"name": "网易云广告缓存",
-			"warning_level": 1,
+			"warning_level": 0,
 			"folders": [
 				{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\ad\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\",
 					"extension": ".mdat"
 				}
 			]
 		},{
 			"name": "网易云在线歌曲缓存",
-			"warning_level": 2,
+			"warning_level": 0,
 			"folders": [
 				{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\",
 					"extension": "*"
 				}
 			]
 		},{
 			"name": "网易云DMP文件",
-			"warning_level": 1,
+			"warning_level": 0,
 			"folders": [
 				{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\dumps",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\",
 					"extension": ".dmp"
 				}
 			]
@@ -38,22 +38,40 @@
 			"warning_level": 1,
 			"folders": [
 				{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\Log\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\",
 					"extension": "*"
 				}
 			],
 			"files": [
-				"C:\\Users\\lenovo\\AppData\\Local\\Netease\\CloudMusic\\cloudmusic.log",
-				"C:\\Users\\lenovo\\AppData\\Local\\Netease\\CloudMusic\\install.log",
-				"C:\\Users\\lenovo\\AppData\\Local\\Netease\\CloudMusic\\web.log"
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\cloudmusic.log",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\install.log",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\web.log"
 			]
 		},{
-			"name": "网易云用户数据",
-			"warning_level": 4,
+			"name": "网易云用户数据及设置",
+			"warning_level": 1,
 			"folders": [
 				{
-					"path": "C:\\Users\\${USERNAME}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
 					"extension": "*"
+				}
+			],
+			"excludes": [
+				{
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Cookies",
+					"strict": true
+				},{
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Cookies-journal",
+					"strict": true
+				},{
+					"path": "data_",
+					"strict": false
+				},{
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Local Storage\\orpheus_orpheus_0.localstorage",
+					"strict": true
+				},{
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Local Storage\\orpheus_orpheus_0.localstorage-journal",
+					"strict": true
 				}
 			]
 		}
