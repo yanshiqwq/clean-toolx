@@ -1,0 +1,51 @@
+{
+	"name": "腾讯会议清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"min_version": 1,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "腾讯会议临时文件",
+			"warning_level": 0,
+			"folders": [
+				{
+					"path": "${USERPROFILE}\\AppData\\Local\\Tencent\\WeMeet\\",
+					"extension": ".tmp"
+				}
+			]
+		},{
+			"name": "腾讯会议头像缓存",
+			"warning_level": 0,
+			"folders": [
+				{
+					"path": "${USERPROFILE}\\AppData\\Local\\Tencent\\WeMeet\\Avatars\\",
+					"extension": "*"
+				}
+			]
+		},{
+			"name": "腾讯会议图片缓存",
+			"warning_level": 2,
+			"folders": [
+				{
+					"path": "${USERPROFILE}\\AppData\\Local\\Tencent\\WeMeet\\im\\images\\",
+					"extension": "*"
+				}
+			]
+		},{
+			"name": "腾讯会议日志",
+			"warning_level": 1,
+			"folders": [
+				{
+					"path": "${USERPROFILE}\\AppData\\Local\\Tencent\\WeMeet\\Logs\\",
+					"extension": "*"
+				}
+			],
+			"files": [
+				"${USERPROFILE}\\AppData\\Local\\Tencent\\WeMeet\\crash_count_down",
+				"${USERPROFILE}\\AppData\\Local\\Tencent\\WeMeet\\beacon_report.log",
+			]
+		}
+	]
+}
