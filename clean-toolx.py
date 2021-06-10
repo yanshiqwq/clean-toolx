@@ -23,11 +23,11 @@ try:
 		return total_size
 	logging.basicConfig(level = logging.DEBUG,format = '[PID #%(process)d] [%(levelname)s] %(message)s')
 	logger = logging.getLogger(__name__)
-	print()
-	print("    #==================================#")
-	print("    |   clean-toolx v1.1.1 By @延时qwq   |")
-	print("    #==================================#")
-	print()
+	logging.info()
+	logging.info("    #==================================#")
+	logging.info("    |   clean-toolx v1.1.1 By @延时qwq   |")
+	logging.info("    #==================================#")
+	logging.info()
 	if os.listdir("./plugins"):
 		clean_count = 0
 		clean_size = 0
@@ -60,7 +60,7 @@ try:
 				if plugin_config["platform"] != platform.system().lower():
 					logging.warn("此插件不适配此操作系统!")
 					continue
-				print("")
+				logging.info("")
 				for rule in plugin_config["rules"]:
 					logging.info("正在索引 " + rule["name"] + " ...")
 					path_list = []
@@ -110,23 +110,23 @@ try:
 							file_count = file_count - 1
 					file_count = len(path_list)
 					if file_count == 0:
-						logging.info("未检测到文件.\n")
+						logging.warn("未检测到文件.\n")
 						continue
-					print("")
+					logging.info("")
 					logging.info("检测到" + str(file_count) + "个文件(" + convert_size(total_size) + "):")
 					total_count = total_count + file_count
 					count = 0
 					for file_path in path_list:
 						try:
 							filesize = convert_size(getsize(file_path))
-							print("\t [" + filesize + "]\t" + file_path)
+							logging.info("\t [" + filesize + "]\t" + file_path)
 							count = count + 1
 						except FileNotFoundError:
 							path_list.remove(file_path)
 						if count >= 10:
-							print("\t  ......\t ......")
+							logging.info("\t  ......\t ......")
 							break
-					print("")
+					logging.info("")
 					if rule["warning_level"] == 0:
 						pass
 					elif rule["warning_level"] == 1:
@@ -187,17 +187,17 @@ try:
 							os.remove(file)
 						except PermissionError as e:
 							if "[WinError 5]" in str(e):
-								print("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
+								logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
 							if "[WinError 32]" in str(e):
-								print("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
+								logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
 						else:
-							print("\t [" + str(count) + "/" + str(file_count) + "] \t删除文件 - " + file)
+							logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t删除文件 - " + file)
 							clean_size = clean_size + filesize
 							clean_count = clean_count + 1
 						count = count + 1
-					print("")
-				print("")
-			print("")
+					logging.info("")
+				logging.info("")
+			logging.info("")
 			logging.info("清理完毕!")
 			try:
 				logging.info("清理了" + str(clean_count) + "个文件(" + convert_size(clean_size) + ").")
@@ -211,7 +211,7 @@ try:
 except BaseException as e:
 	logging.info(e)
 	if isinstance(e, KeyboardInterrupt):
-		print("")
+		logging.info("")
 		logging.error("进程终止!")
 except SystemExit as e:
 	logging.info("退出程序!")
