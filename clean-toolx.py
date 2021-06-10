@@ -1,4 +1,4 @@
-import logging, json, os, sys, platform, re
+import logging, json, os, sys, platform, re, time
 from os.path import getsize
 try:
 	def convert_size(size):
@@ -23,11 +23,11 @@ try:
 		return total_size
 	logging.basicConfig(level = logging.DEBUG,format = '[PID #%(process)d] [%(levelname)s] %(message)s')
 	logger = logging.getLogger(__name__)
-	logging.info()
+	logging.info("")
 	logging.info("    #==================================#")
-	logging.info("    |   clean-toolx v1.1.1 By @延时qwq   |")
+	logging.info("    |   clean-toolx v1.1.2 By @延时qwq   |")
 	logging.info("    #==================================#")
-	logging.info()
+	logging.info("")
 	if os.listdir("./plugins"):
 		clean_count = 0
 		clean_size = 0
@@ -43,6 +43,7 @@ try:
 			sys.exit()
 		else:
 			logging.info("检测到" + str(plugin_count) + "个插件.")
+			print("\n")
 		for root,dirs,files in os.walk("./plugins"):
 			for file in files:
 				if os.path.splitext(file)[-1] == ".json":
@@ -60,8 +61,8 @@ try:
 				if plugin_config["platform"] != platform.system().lower():
 					logging.warn("此插件不适配此操作系统!")
 					continue
-				logging.info("")
 				for rule in plugin_config["rules"]:
+					logging.info("")
 					logging.info("正在索引 " + rule["name"] + " ...")
 					path_list = []
 					if "folders" in rule:
@@ -110,7 +111,7 @@ try:
 							file_count = file_count - 1
 					file_count = len(path_list)
 					if file_count == 0:
-						logging.warn("未检测到文件.\n")
+						logging.info("未检测到文件.")
 						continue
 					logging.info("")
 					logging.info("检测到" + str(file_count) + "个文件(" + convert_size(total_size) + "):")
@@ -130,7 +131,7 @@ try:
 					if rule["warning_level"] == 0:
 						pass
 					elif rule["warning_level"] == 1:
-						input("[PID " + str(str(os.getpid())) + "] [INFO] 按[Enter]开始清理...")
+						input("[PID #" + str(str(os.getpid())) + "] [INFO] 按[Enter]开始清理...")
 					elif rule["warning_level"] == 2:
 						while True:
 							answer = input("[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会影响您的正常使用,确定继续吗?[Y/n]")
@@ -195,9 +196,8 @@ try:
 							clean_size = clean_size + filesize
 							clean_count = clean_count + 1
 						count = count + 1
-					logging.info("")
-				logging.info("")
-			logging.info("")
+				print("")
+			print("")
 			logging.info("清理完毕!")
 			try:
 				logging.info("清理了" + str(clean_count) + "个文件(" + convert_size(clean_size) + ").")
