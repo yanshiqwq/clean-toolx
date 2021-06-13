@@ -25,7 +25,7 @@ try:
 	logger = logging.getLogger(__name__)
 	logging.info("")
 	logging.info("    #==================================#")
-	logging.info("    |   clean-toolx v1.1.2 By @延时qwq   |")
+	logging.info("    |   clean-toolx v1.1.3 By @延时qwq   |")
 	logging.info("    #==================================#")
 	logging.info("")
 	if os.listdir("./plugins"):
@@ -54,6 +54,8 @@ try:
 					plugin_config = json.loads(plugin_data)
 				except json.decoder.JSONDecodeError as e:
 					logging.error("插件配置有误!请检查插件完整性(" + file + ").")
+					logging.error("错误信息: " + str(e))
+					print()
 					continue
 				logging.info("插件名称: " + plugin_config["name"] + " (" + file + ")")
 				logging.info("插件作者: " + plugin_config["author"])
@@ -65,50 +67,29 @@ try:
 					logging.info("")
 					logging.info("正在索引 " + rule["name"] + " ...")
 					path_list = []
-					if "folders" in rule:
-						for folders in rule["folders"]:
-							path = folders["path"]
-							match = re.findall('\$\{.+\}', path)
+					if "paths" in rule:
+						for paths in rule["paths"]:
+							path = paths["path"]
+							scan = paths["scan_path"]
+							match = re.findall('\$\{.+?\}', scan)
+							if match != None:
+								for varible in match:
+									scan = scan.replace(varible, os.environ[varible[2: -1]])
+							logging.info("正在扫描 " + scan + " ...")
+							match = re.findall('\$\{.+?\}', path)
 							if match != None:
 								for varible in match:
 									path = path.replace(varible, os.environ[varible[2: -1]])
-							for root,dirs,names in os.walk(path):
+							for root,dirs,names in os.walk(scan):
 								for filename in names:
-									if os.path.splitext(os.path.join(root,filename))[-1].lower() == folders["extension"].lower() or folders["extension"] == "*":
+									match = re.match(path.replace("\\","\\\\"), os.path.join(root,filename))
+									if match != None:
 										try:
 											getsize(os.path.join(root,filename))
 										except FileNotFoundError as e:
 											continue
 										path_list.append(os.path.join(root,filename))
 										total_size = total_size + getsize(os.path.join(root,filename))
-					if "files" in rule:
-						for file in rule["files"]:
-							match = re.findall('\$\{.+\}', file)
-							if match != None:
-								for varible in match:
-									file = file.replace(varible, os.environ[varible[2: -1]])
-							try:
-								getsize(file)
-							except FileNotFoundError as e:
-								continue
-							path_list.append(file)
-							total_size = total_size + getsize(file)
-					if "excludes" in rule:
-						for exclude in rule["excludes"]:
-							match = re.findall('\$\{.+\}', exclude["path"])
-							if match != None:
-								for varible in match:
-									exclude["path"] = exclude["path"].replace(varible, os.environ[varible[2: -1]])
-							try:
-								if exclude["strict"] == False:
-									for path in path_list:
-										if exclude["path"] in path:
-											path_list.remove(path)
-								else:
-									path_list.remove(exclude["path"])
-							except ValueError:
-								pass
-							file_count = file_count - 1
 					file_count = len(path_list)
 					if file_count == 0:
 						logging.info("未检测到文件.")

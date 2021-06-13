@@ -1,77 +1,63 @@
 {
 	"name": "网易云清理",
 	"author": "延时qwq",
-	"version_name": "v1.0",
-	"version_code": 1,
+	"version_name": "v1.1",
+	"version_code": 2,
 	"min_version": 1,
 	"platform": "windows",
 	"rules": [
 		{
 			"name": "网易云广告缓存",
 			"warning_level": 0,
-			"folders": [
+			"paths": [
 				{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\",
-					"extension": ".mdat"
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\.+\\.mdat"
 				}
 			]
 		},{
 			"name": "网易云在线歌曲缓存",
 			"warning_level": 0,
-			"folders": [
+			"paths": [
 				{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\",
-					"extension": "*"
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\.+"
 				}
 			]
 		},{
 			"name": "网易云DMP文件",
 			"warning_level": 0,
-			"folders": [
+			"paths": [
 				{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\",
-					"extension": ".dmp"
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\.+\\.dmp"
 				}
 			]
 		},{
 			"name": "网易云日志",
-			"warning_level": 1,
-			"folders": [
+			"warning_level": 0,
+			"paths": [
 				{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\",
-					"extension": "*"
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\.+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\.+\\.log$"
 				}
-			],
-			"files": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\cloudmusic.log",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\install.log",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\web.log"
 			]
 		},{
-			"name": "网易云用户数据及设置",
-			"warning_level": 1,
-			"folders": [
+			"name": "网易云内置浏览器缓存",
+			"warning_level": 0,
+			"paths": [
 				{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
-					"extension": "*"
-				}
-			],
-			"excludes": [
-				{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Cookies",
-					"strict": true
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?data_[\\d]+"
 				},{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Cookies-journal",
-					"strict": true
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\f_[\\d|a-f]{6,6}"
 				},{
-					"path": "data_",
-					"strict": false
-				},{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Local Storage\\orpheus_orpheus_0.localstorage",
-					"strict": true
-				},{
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\Local Storage\\orpheus_orpheus_0.localstorage-journal",
-					"strict": true
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index"
 				}
 			]
 		}

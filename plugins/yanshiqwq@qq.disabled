@@ -1,0 +1,19 @@
+{
+	"name": "QQ清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "QQ更新文件",
+			"warning_level": 2,
+			"paths": [
+				{
+					"scan_path": "${PROGRAMFILES(X86)}\\Tencent\\QQ\\",
+					"path": "${PROGRAMFILES(X86)}\\Tencent\\QQ\\.+"
+				}
+			]
+		}
+	]
+}
