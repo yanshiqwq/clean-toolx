@@ -1,0 +1,61 @@
+{
+	"name": "腾讯会议清理",
+	"author": "延时qwq",
+	"version_name": "v1.1",
+	"version_code": 2,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "腾讯会议临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\Logs[0-9]{8,8}_[0-9]{18,18}_Windows_meeting_[0-9]{18,18}_[0-9]{18,18}_[0-9]{10,10}_[0-9]{10,10}_[0-9|\\.]{9,9}_[0-9|a-f]{4,4}.tmp"
+				}
+			]
+		},{
+			"name": "腾讯会议头像缓存",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\Avatars\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\Avatars\\[0-9|a-f]{32,32}"
+				}
+			]
+		},{
+			"name": "腾讯会议图片缓存",
+			"warning_level": 2,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\im\\images\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\im\\images\\[0-9]+\\original_[0-9|a-f]{32,32}"
+				},{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\im\\images\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\im\\images\\[0-9]+\\temp\\\\{[0-9|A-F]{8,8}-[0-9|A-F]{4,4}-[0-9|A-F]{4,4}-[0-9|A-F]{4,4}-[0-9|A-F]{12,12}\\}\\.png"
+				}
+			]
+		},{
+			"name": "腾讯会议虚拟背景缓存",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\v_bkg\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\v_bkg\\.+"
+				}
+			]
+		},{
+			"name": "腾讯会议日志",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\Logs\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\Logs\\.+"
+				},{
+					"scan_path": "${APPDATA}\\Tencent\\WeMeet\\",
+					"path": "${APPDATA}\\Tencent\\WeMeet\\(crash_count_down|beacon_report\\.log)"
+				}
+			]
+		}
+	]
+}

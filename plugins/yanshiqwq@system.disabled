@@ -1,0 +1,58 @@
+{
+	"name": "系统清理",
+	"author": "延时qwq",
+	"version_name": "v1.2",
+	"version_code": 3,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "Windows目录临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\Temp\\",
+					"path": "${WINDIR}\\Temp\\.+"
+				}
+			]
+		},{
+			"name": "AppData目录临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${TEMP}\\",
+					"path": "${TEMP}\\.+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\",
+					"path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\.+"
+				}
+			]
+		},{
+			"name": "Prefetch文件",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\Prefetch\\",
+					"path": "${WINDIR}\\Prefetch\\.+.pf"
+				}
+			]
+		},{
+			"name": "程序崩溃内存转储文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\CrashDumps\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\CrashDumps\\.+.dmp"
+				}
+			]
+		},{
+			"name": "打开文件历史记录",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Microsoft\\Windows\\Recent\\",
+					"path": "${APPDATA}\\Microsoft\\Windows\\Recent\\.+.lnk"
+				}
+			]
+		}
+	]
+}

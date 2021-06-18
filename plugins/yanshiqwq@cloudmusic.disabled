@@ -3,7 +3,6 @@
 	"author": "—” ±qwq",
 	"version_name": "v1.1",
 	"version_code": 2,
-	"min_version": 1,
 	"platform": "windows",
 	"rules": [
 		{

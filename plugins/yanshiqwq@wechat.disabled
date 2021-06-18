@@ -1,0 +1,23 @@
+{
+	"name": "微信清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"min_version": 1,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "微信内置浏览器缓存",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\xwalk\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\xwalk\\(GPUCache\\)?(data_[0-9]|index)+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\xwalk\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\xwalk\\f_[0-9|a-f]{6,6}"
+				}
+			]
+		}
+	]
+}

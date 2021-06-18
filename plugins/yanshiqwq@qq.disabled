@@ -6,12 +6,58 @@
 	"platform": "windows",
 	"rules": [
 		{
-			"name": "QQ更新文件",
+			"name": "QQ聊天缓存数据库",
 			"warning_level": 2,
 			"paths": [
 				{
-					"scan_path": "${PROGRAMFILES(X86)}\\Tencent\\QQ\\",
-					"path": "${PROGRAMFILES(X86)}\\Tencent\\QQ\\.+"
+					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
+					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\.+db",
+					"depth": 3
+				}
+			]
+		},{
+			"name": "QQ图片缓存",
+			"warning_level": 2,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
+					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Image",
+					"excludes": [
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Video)"
+					]
+				}
+			]
+		},{
+			"name": "QQ视频缓存",
+			"warning_level": 2,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
+					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Video",
+					"excludes": [
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Image)"
+					]
+				}
+			]
+		},{
+			"name": "QQ缓存",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
+					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+"
+				}
+			]
+		},{
+			"name": "QQ下载目录",
+			"warning_level": 5,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
+					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\FileRecv",
+					"excludes": [
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|Video|Image)"
+					]
 				}
 			]
 		}

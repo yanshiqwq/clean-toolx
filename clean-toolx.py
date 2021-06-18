@@ -21,12 +21,12 @@ try:
 			input()
 			sys.exit()
 		return total_size
-	logging.basicConfig(level = logging.DEBUG,format = '[PID #%(process)d] [%(levelname)s] %(message)s')
+	logging.basicConfig(level = logging.INFO,format = '[PID #%(process)d] [%(levelname)s] %(message)s')
 	logger = logging.getLogger(__name__)
 	logging.info("")
-	logging.info("    #==================================#")
-	logging.info("    |   clean-toolx v1.1.3 By @延时qwq   |")
-	logging.info("    #==================================#")
+	logging.info("	#==================================#")
+	logging.info("	|   clean-toolx v1.1.4 By @延时qwq   |")
+	logging.info("	#==================================#")
 	logging.info("")
 	if os.listdir("./plugins"):
 		clean_count = 0
@@ -64,6 +64,7 @@ try:
 					logging.warn("此插件不适配此操作系统!")
 					continue
 				for rule in plugin_config["rules"]:
+					rule_size = 0
 					logging.info("")
 					logging.info("正在索引 " + rule["name"] + " ...")
 					path_list = []
@@ -71,6 +72,19 @@ try:
 						for paths in rule["paths"]:
 							path = paths["path"]
 							scan = paths["scan_path"]
+							if "depth" in paths:
+								depth = paths["depth"]
+							else:
+								depth = 1919810
+							if "excludes" in paths:
+								excludes = []
+								for exclude in paths["excludes"]:
+									match = re.findall('\$\{.+?\}', exclude)
+									if match != None:
+										for varible in match:
+											excludes.append(exclude.replace(varible, os.environ[varible[2: -1]]))
+							else:
+								excludes = []
 							match = re.findall('\$\{.+?\}', scan)
 							if match != None:
 								for varible in match:
@@ -80,7 +94,20 @@ try:
 							if match != None:
 								for varible in match:
 									path = path.replace(varible, os.environ[varible[2: -1]])
+							depth_count = 1
 							for root,dirs,names in os.walk(scan):
+								continue_signal = False
+								if depth_count == depth:
+									break
+								logging.debug("root = " + root)
+								for exclude in excludes:
+									logging.debug("exclude = " + exclude)
+									match = re.match(exclude.replace("\\","\\\\"), root)
+									if match != None:
+										continue_signal = True
+										break
+								if continue_signal == True:
+									continue
 								for filename in names:
 									match = re.match(path.replace("\\","\\\\"), os.path.join(root,filename))
 									if match != None:
@@ -90,12 +117,16 @@ try:
 											continue
 										path_list.append(os.path.join(root,filename))
 										total_size = total_size + getsize(os.path.join(root,filename))
+										rule_size = rule_size + getsize(os.path.join(root,filename))
+								depth_count += 1
+					else:
+						logging.error("插件配置有误!请检查插件完整性(" + file + ").")
 					file_count = len(path_list)
 					if file_count == 0:
 						logging.info("未检测到文件.")
 						continue
 					logging.info("")
-					logging.info("检测到" + str(file_count) + "个文件(" + convert_size(total_size) + "):")
+					logging.info("检测到" + str(file_count) + "个文件(" + convert_size(rule_size) + "):")
 					total_count = total_count + file_count
 					count = 0
 					for file_path in path_list:
@@ -183,14 +214,14 @@ try:
 			try:
 				logging.info("清理了" + str(clean_count) + "个文件(" + convert_size(clean_size) + ").")
 				if total_count - clean_count > 0:
-					logging.info("有" + str(total_count - clean_count) + "个文件(" + convert_size(total_size - clean_size) + ")无法清理.")
+					logging.info("有" + str(total_count - clean_count) + "个文件(" + convert_size(total_size - clean_size) + ")未清理.")
 			except NameError:
 				logging.info("未清理文件.")
 	else:
 		logging.error("未检测到任何插件!")
 		sys.exit()
 except BaseException as e:
-	logging.info(e)
+	logging.error(e)
 	if isinstance(e, KeyboardInterrupt):
 		logging.info("")
 		logging.error("进程终止!")
