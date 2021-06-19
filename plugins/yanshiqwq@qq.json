@@ -4,6 +4,9 @@
 	"version_name": "v1.0",
 	"version_code": 1,
 	"platform": "windows",
+	"requires": [
+		"${PROGRAMFILES(X86)}\\Tencent\\QQ\\Bin\\QQScLauncher.exe"
+	],
 	"rules": [
 		{
 			"name": "QQÁÄÌì»º´æÊý¾Ý¿â",
@@ -46,6 +49,12 @@
 				{
 					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
 					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\STemp\\",
+					"path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\STemp\\.+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\webkit_cache\\",
+					"path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\webkit_cache\\.+"
 				}
 			]
 		},{

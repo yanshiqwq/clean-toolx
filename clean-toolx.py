@@ -1,4 +1,4 @@
-import logging, json, os, sys, platform, re, time
+import logging, json, os, sys, platform, re, time, stat
 from os.path import getsize
 try:
 	def convert_size(size):
@@ -25,7 +25,7 @@ try:
 	logger = logging.getLogger(__name__)
 	logging.info("")
 	logging.info("	#==================================#")
-	logging.info("	|   clean-toolx v1.1.4 By @延时qwq   |")
+	logging.info("	|   clean-toolx v1.1.5 By @延时qwq   |")
 	logging.info("	#==================================#")
 	logging.info("")
 	if os.listdir("./plugins"):
@@ -46,6 +46,7 @@ try:
 			print("\n")
 		for root,dirs,files in os.walk("./plugins"):
 			for file in files:
+				continue_signal = False
 				if os.path.splitext(file)[-1] == ".json":
 					plugin_data = open("./plugins/" + file).read()
 				else:
@@ -60,8 +61,19 @@ try:
 				logging.info("插件名称: " + plugin_config["name"] + " (" + file + ")")
 				logging.info("插件作者: " + plugin_config["author"])
 				logging.info("插件版本: " + plugin_config["version_name"])
-				if plugin_config["platform"] != platform.system().lower():
-					logging.warn("此插件不适配此操作系统!")
+				if plugin_config["platform"].lower() != platform.system().lower():
+					logging.error("此插件不适配此操作系统!")
+					continue
+				if "requires" in plugin_config:
+					for path in plugin_config["requires"]:
+						match = re.findall('\$\{.+?\}', path)
+						if match != None:
+							for varible in match:
+								path = path.replace(varible, os.environ[varible[2: -1]])
+						if os.path.exists(path) == False:
+							logging.error("未安装此插件所需的软件!")
+							continue_signal = True
+				if continue_signal == True:
 					continue
 				for rule in plugin_config["rules"]:
 					rule_size = 0
@@ -89,11 +101,11 @@ try:
 							if match != None:
 								for varible in match:
 									scan = scan.replace(varible, os.environ[varible[2: -1]])
-							logging.info("正在扫描 " + scan + " ...")
 							match = re.findall('\$\{.+?\}', path)
 							if match != None:
 								for varible in match:
 									path = path.replace(varible, os.environ[varible[2: -1]])
+							logging.info("正在扫描 " + path + " ...")
 							depth_count = 1
 							for root,dirs,names in os.walk(scan):
 								continue_signal = False
@@ -109,6 +121,10 @@ try:
 								if continue_signal == True:
 									continue
 								for filename in names:
+									try:
+										os.chmod(filename, stat.S_IWRITE)
+									except FileNotFoundError:
+										pass
 									match = re.match(path.replace("\\","\\\\"), os.path.join(root,filename))
 									if match != None:
 										try:
@@ -226,4 +242,4 @@ except BaseException as e:
 		logging.info("")
 		logging.error("进程终止!")
 except SystemExit as e:
-	logging.info("退出程序!")
+	logging.error("退出程序!")

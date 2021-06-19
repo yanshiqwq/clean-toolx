@@ -1,0 +1,40 @@
+{
+	"name": "OneDrive清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"platform": "windows",
+	"requires": [
+		"${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\OneDrive.exe"
+	],
+	"rules": [
+		{
+			"name": "OneDrive日志",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\Logs\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\.+"
+				}
+			]
+		},{
+			"name": "OneDrive旧版残留文件",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\[0-9]+.[0-9]{3,3}.[0-9]{4,4}.[0-9]{4,4}\\.+"
+				}
+			]
+		},{
+			"name": "OneDrive文件列表缓存",
+			"warning_level": 2,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\settings\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\settings\\(Business[0-9]+|Personal)\\[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}.dat"
+				}
+			]
+		}
+	]
+}

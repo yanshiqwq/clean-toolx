@@ -1,0 +1,170 @@
+{
+	"name": "系统清理",
+	"author": "延时qwq",
+	"version_name": "v1.3",
+	"version_code": 4,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "Windows目录临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\Temp\\",
+					"path": "${WINDIR}\\Temp\\.+"
+				}
+			]
+		},{
+			"name": "Windows.old",
+			"warning_level": 4,
+			"paths": [
+				{
+					"scan_path": "${SYSTEMDRIVE}\\Windows.old\\",
+					"path": "${SYSTEMDRIVE}\\Windows.old\\.+"
+				}
+			]
+		},{
+			"name": "AppData目录临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${TEMP}\\",
+					"path": "${TEMP}\\.+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\",
+					"path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\.+"
+				}
+			]
+		},{
+			"name": "本地设置临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\Local Settings\\Temp\\",
+					"path": "${USERPROFILE}\\Local Settings\\Temp\\.+"
+				}
+			]
+		},{
+			"name": "WinSxS目录临时文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\WinSxS\\Temp\\",
+					"path": "${WINDIR}\\WinSxS\\Temp\\.+"
+				}
+			]
+		},{
+			"name": "WD下载的补丁",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\SoftwareDistribution\\Download\\",
+					"path": "${WINDIR}\\SoftwareDistribution\\Download\\[0-9]{32,32}\\.+"
+				}
+			]
+		},{
+			"name": "WD扫描缓存文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows Defender\\Scans\\",
+					"path": "${PROGRAMDATA}\\Microsoft\\Windows Defender\\Scans\\.+"
+				}
+			]
+		},{
+			"name": "Prefetch文件",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\Prefetch\\",
+					"path": "${WINDIR}\\Prefetch\\.+.pf"
+				}
+			]
+		},{
+			"name": "内存转储文件",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\CrashDumps\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\CrashDumps\\.+.dmp"
+				},{
+					"scan_path": "${WINDIR}\\System32\\config\\systemprofile\\AppData\\Local\\CrashDumps\\",
+					"path": "${WINDIR}\\System32\\config\\systemprofile\\AppData\\Local\\CrashDumps\\.+.dmp"
+				},{
+					"scan_path": "${PROGRAMDATA}\\Microsoft\\WDF\\",
+					"path": "${PROGRAMDATA}\\Microsoft\\WDF\\.+.dmp"
+				},{
+					"scan_path": "${WINDIR}\\",
+					"path": "${WINDIR}\\MEMORY.DMP",
+					"depth": 2
+				}
+			]
+		},{
+			"name": "打开文件历史记录",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\Microsoft\\Windows\\Recent\\",
+					"path": "${APPDATA}\\Microsoft\\Windows\\Recent\\(AutomaticDestinations\\|CustomDestinations\\)?.+(.lnk|.customDestinations-ms|.automaticDestinations-ms|.temp)"
+				}
+			]
+		},{
+			"name": "错误报告文件",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\WER\\LocalReportArchive\\",
+					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\WER\\LocalReportArchive\\.+.zip"
+				}
+			]
+		},{
+			"name": "Windows日志文件",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\Logs\\",
+					"path": "${WINDIR}\\Logs\\.+"
+				},{
+					"scan_path": "${WINDIR}\\System32\\Logs\\",
+					"path": "${WINDIR}\\System32\\Logs\\.+"
+				}
+			]
+		},{
+			"name": "Windows沙盒文件",
+			"warning_level": 4,
+			"paths": [
+				{
+					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\Dumps\\",
+					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\Dumps\\.+"
+				},{
+					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\BaseImages\\",
+					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\BaseImages\\[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}\\.+(\\Snapshot\\)?.vhdx"
+				},{
+					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\PortableBaseLayer\\",
+					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\PortableBaseLayer\\.+.vhdx"
+				}
+			]
+		},{
+			"name": "Explorer图标缓存数据库",
+			"warning_level": 2,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\.+.db+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\ThumbCacheToDelete\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\ThumbCacheToDelete\\.+.tmp"
+				}
+			]
+		},{
+			"name": "回收站",
+			"warning_level": 4,
+			"paths": [
+				{
+					"scan_path": "${SYSTEMDRIVE}\\$RECYCLE.BIN\\",
+					"path": "${SYSTEMDRIVE}\\$RECYCLE.BIN\\.+"
+				}
+			]
+		}
+	]
+}

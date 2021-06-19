@@ -1,0 +1,44 @@
+{
+	"name": "Œ¢–≈«Â¿Ì",
+	"author": "—” ±qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"min_version": 1,
+	"platform": "windows",
+	"requires": [
+		"${PROGRAMFILES(X86)}\\Tencent\\WeChat\\WeChat.exe"
+	],
+	"rules": [
+		{
+			"name": "Œ¢–≈ƒ⁄÷√‰Ø¿¿∆˜ª∫¥Ê",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\xwalk\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\xwalk\\(GPUCache\\)?(data_[0-9]|index)+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\xwalk\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\xwalk\\f_[0-9|a-f]{6,6}"
+				}
+			]
+		},{
+			"name": "Œ¢–≈ª∫¥Ê",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${USERPROFILE}\\Documents\\WeChat Files\\",
+					"path": "${USERPROFILE}\\Documents\\WeChat Files\\[0-9|a-f|A-F]{32,32}(_t|_t[0-9]|.[0-9])?(.dat)?",
+					"depth": 2
+				},{
+					"scan_path": "${USERPROFILE}\\Documents\\WeChat Files\\",
+					"path": "${USERPROFILE}\\Documents\\WeChat Files\\[0-9|a-f]{7,8}_([0-9]+_)?thumb.dat",
+					"depth": 2
+				},{
+					"scan_path": "${USERPROFILE}\\Documents\\WeChat Files\\",
+					"path": "${USERPROFILE}\\Documents\\WeChat Files\\(_APP_.wxapkg|~$cache[0-9]|log[0-9])",
+					"depth": 2
+				}
+			]
+		}
+	]
+}

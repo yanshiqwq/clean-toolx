@@ -4,6 +4,9 @@
 	"version_name": "v1.1",
 	"version_code": 2,
 	"platform": "windows",
+	"requires": [
+		"${PROGRAMFILES(X86)}\\Netease\\CloudMusic\\CloudMusic.exe"
+	],
 	"rules": [
 		{
 			"name": "ÍøÒ×ÔÆ¹ã¸æ»º´æ",
@@ -57,6 +60,9 @@
 				},{
 					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
 					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+"
 				}
 			]
 		}

@@ -4,6 +4,9 @@
 	"version_name": "v1.1",
 	"version_code": 2,
 	"platform": "windows",
+	"requires": [
+		"${PROGRAMFILES(X86)}\\Tencent\\WeMeet\\wemeetapp.exe"
+	],
 	"rules": [
 		{
 			"name": "腾讯会议临时文件",

@@ -4,6 +4,9 @@
 	"version_name": "v1.1",
 	"version_code": 2,
 	"platform": "windows",
+	"requires": [
+		"${PROGRAMFILES(X86)}\\bililive\\ugc_assistant\\ugc_assistant.exe"
+	],
 	"rules": [
 		{
 			"name": "BÕ¾Í¶¸å¹¤¾ß»º´æ",
