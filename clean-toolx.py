@@ -28,13 +28,13 @@ try:
 	logging.info("	|   clean-toolx v1.1.5 By @延时qwq   |")
 	logging.info("	#==================================#")
 	logging.info("")
-	if os.listdir("./plugins"):
+	if os.listdir("plugins"):
 		clean_count = 0
 		clean_size = 0
 		total_size = 0
 		total_count = 0
 		plugin_count = 0
-		for root,dirs,files in os.walk("./plugins"):
+		for root,dirs,files in os.walk("plugins"):
 			for file in files:
 				if os.path.splitext(file)[-1]=='.json':
 					plugin_count += 1
@@ -44,11 +44,11 @@ try:
 		else:
 			logging.info("检测到" + str(plugin_count) + "个插件.")
 			print("\n")
-		for root,dirs,files in os.walk("./plugins"):
+		for root,dirs,files in os.walk("plugins"):
 			for file in files:
 				continue_signal = False
 				if os.path.splitext(file)[-1] == ".json":
-					plugin_data = open("./plugins/" + file).read()
+					plugin_data = open("plugins/" + file).read()
 				else:
 					continue
 				try:
