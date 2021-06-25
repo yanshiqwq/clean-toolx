@@ -25,7 +25,7 @@ try:
 	logger = logging.getLogger(__name__)
 	logging.info("")
 	logging.info("	#==================================#")
-	logging.info("	|   clean-toolx v1.1.5 By @延时qwq   |")
+	logging.info("	|   clean-toolx v1.2.3 By @延时qwq   |")
 	logging.info("	#==================================#")
 	logging.info("")
 	if os.listdir("plugins"):
@@ -48,13 +48,19 @@ try:
 			for file in files:
 				continue_signal = False
 				if os.path.splitext(file)[-1] == ".json":
-					plugin_data = open("plugins/" + file).read()
+					try:
+						plugin_data = open("plugins/" + file).read()
+					except UnicodeDecodeError as e:
+						logging.error("插件解析失败!请将插件编码设为GB2312(" + file + ").")
+						logging.error("错误信息: " + str(e))
+						print()
+						continue
 				else:
 					continue
 				try:
 					plugin_config = json.loads(plugin_data)
 				except json.decoder.JSONDecodeError as e:
-					logging.error("插件配置有误!请检查插件完整性(" + file + ").")
+					logging.error("插件解析失败!请检查插件完整性(" + file + ").")
 					logging.error("错误信息: " + str(e))
 					print()
 					continue
@@ -123,6 +129,7 @@ try:
 								for filename in names:
 									try:
 										os.chmod(filename, stat.S_IWRITE)
+										os.chmod(filename, stat.S_IRWXG)
 									except FileNotFoundError:
 										pass
 									match = re.match(path.replace("\\","\\\\"), os.path.join(root,filename))

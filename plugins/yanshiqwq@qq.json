@@ -26,7 +26,7 @@
 					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
 					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Image",
 					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Video)"
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Video)\\.+"
 					]
 				}
 			]
@@ -38,7 +38,7 @@
 					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
 					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Video",
 					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Image)"
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Image)\\.+"
 					]
 				}
 			]
@@ -48,7 +48,10 @@
 			"paths": [
 				{
 					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
-					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+"
+					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+",
+					"excludes": [
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Image|Video)\\.+"
+					]
 				},{
 					"scan_path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\STemp\\",
 					"path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\STemp\\.+"
@@ -65,7 +68,7 @@
 					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
 					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\FileRecv",
 					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|Video|Image)"
+						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|Video|Image)\\.+"
 					]
 				}
 			]

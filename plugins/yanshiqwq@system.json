@@ -60,6 +60,9 @@
 				{
 					"scan_path": "${WINDIR}\\SoftwareDistribution\\Download\\",
 					"path": "${WINDIR}\\SoftwareDistribution\\Download\\[0-9]{32,32}\\.+"
+				},{
+					"scan_path": "${WINDIR}\\SoftwareDistribution.backup\\",
+					"path": "${WINDIR}\\SoftwareDistribution.backup\\.+"
 				}
 			]
 		},{
@@ -78,6 +81,15 @@
 				{
 					"scan_path": "${WINDIR}\\Prefetch\\",
 					"path": "${WINDIR}\\Prefetch\\.+.pf"
+				}
+			]
+		},{
+			"name": "ResCacheÎÄ¼þ",
+			"warning_level": 1,
+			"paths": [
+				{
+					"scan_path": "${WINDIR}\\rescache\\_merged\\",
+					"path": "${WINDIR}\\rescache\\_merged\\[0-9]+\\[0-9]+.pri"
 				}
 			]
 		},{

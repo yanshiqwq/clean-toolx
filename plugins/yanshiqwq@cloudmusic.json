@@ -44,7 +44,7 @@
 					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\.+"
 				},{
 					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\.+\\.log$"
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\.+.log$"
 				}
 			]
 		},{
@@ -63,6 +63,9 @@
 				},{
 					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\",
 					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+"
+				},{
+					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\file\\",
+					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\file\\.+"
 				}
 			]
 		}

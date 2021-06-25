@@ -1,0 +1,29 @@
+{
+	"name": "BlockBench«Â¿Ì",
+	"author": "—” ±qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"min_version": 1,
+	"platform": "windows",
+	"requires": [
+		"${USERPROFILE}\\AppData\\Local\\Programs\\BlockBench\\BlockBench.exe"
+	],
+	"rules": [
+		{
+			"name": "BlockBenchª∫¥Ê",
+			"warning_level": 0,
+			"paths": [
+				{
+					"scan_path": "${APPDATA}\\BlockBench\\Cache\\",
+					"path": "${APPDATA}\\BlockBench\\Cache\\.+"
+				},{
+					"scan_path": "${APPDATA}\\BlockBench\\Code Cache\\",
+					"path": "${APPDATA}\\BlockBench\\BlockBench Cache\\.+"
+				},{
+					"scan_path": "${APPDATA}\\BlockBench\\GPUCache\\",
+					"path": "${APPDATA}\\BlockBench\\GPUCache\\.+"
+				}
+			]
+		}
+	]
+}
