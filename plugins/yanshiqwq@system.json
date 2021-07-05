@@ -9,173 +9,190 @@
 			"name": "Windows目录临时文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${WINDIR}\\Temp\\",
-					"path": "${WINDIR}\\Temp\\.+"
-				}
+				"${WINDIR}\\Temp\\.+"
 			]
 		},{
 			"name": "Windows.old",
 			"warning_level": 4,
+			"descript": "清理后将无法回滚系统,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${SYSTEMDRIVE}\\Windows.old\\",
-					"path": "${SYSTEMDRIVE}\\Windows.old\\.+"
-				}
+				"${SYSTEMDRIVE}\\Windows.old\\.*"
+			]
+		},{
+			"name": "Windows事件日志",
+			"warning_level": 2,
+			"descript": "清理后将无法查看windows日志,是否清理?",
+			"paths": [
+				"${WINDIR}\\System32\\winevt\\.+"
 			]
 		},{
 			"name": "AppData目录临时文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${TEMP}\\",
-					"path": "${TEMP}\\.+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\",
-					"path": "${USERPROFILE}\\AppData\\LocalLow\\Temp\\.+"
-				}
+				"${TEMP}\\.+",
+				"${USERPROFILE}\\AppData\\LocalLow\\Temp\\.+"
+			]
+		},{
+			"name": "AppData目录临时文件",
+			"warning_level": 0,
+			"paths": [
+				"${TEMP}\\.+",
+				"${USERPROFILE}\\AppData\\LocalLow\\Temp\\.+",
+				"${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\(Feeds Cache|AppCache|FontCache|ActionCenterCache|Caches|IECompatCache|IECompatUaCache|WebCache|WebsiteCache|INetCache\\IE)\\.+",
+				"${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\(UsrCache|WebCacheLock).dat.*"
+			]
+		},{
+			"name": "Package Cache文件",
+			"warning_level": 4,
+			"descript": "清理后部分应用升级、修复、增添组件需要联网或者备好安装镜像,是否清理?",
+			"paths": [
+				"${USERPROFILE}\\AppData\\Local\\Package Cache\\.+",
+				"${PROGRAMDATA}\\Package Cache\\.+"
+			]
+		},{
+			"name": "Installer基线缓存",
+			"warning_level": 4,
+			"descript": "清理后部分应用升级、修复、增添组件需要联网或者备好安装镜像,是否清理?",
+			"paths": [
+				"${SYSTEMROOT}\\Installer\\\$PatchCache\$\\.+"
+			]
+		},{
+			"name": "Windows更新安装记录",
+			"warning_level": 2,
+			"descript": "清理后更新历史记录将被清空,是否清理?",
+			"paths": [
+				"${USERPROFILE}\\AppData\\Local\\Package Cache\\.+",
+				"${PROGRAMDATA}\\Package Cache\\.+"
 			]
 		},{
 			"name": "本地设置临时文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\Local Settings\\Temp\\",
-					"path": "${USERPROFILE}\\Local Settings\\Temp\\.+"
-				}
+				"${USERPROFILE}\\Local Settings\\Temp\\.+"
+			]
+		},{
+			"name": "微软小娜缓存",
+			"warning_level": 0,
+			"paths": [
+				"${USERPROFILE}\\AppData\\Local\\Packages\\Microsoft.Windows.Cortana_cw5n1h2txyewy\\LocalState\\(AppIconCache|DeviceSearchCache)\\.+"
 			]
 		},{
 			"name": "WinSxS目录临时文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${WINDIR}\\WinSxS\\Temp\\",
-					"path": "${WINDIR}\\WinSxS\\Temp\\.+"
-				}
+				"${WINDIR}\\WinSxS\\Temp\\.+"
 			]
 		},{
-			"name": "WD下载的补丁",
-			"warning_level": 0,
+			"name": "System32目录备份文件",
+			"warning_level": 1,
 			"paths": [
-				{
-					"scan_path": "${WINDIR}\\SoftwareDistribution\\Download\\",
-					"path": "${WINDIR}\\SoftwareDistribution\\Download\\[0-9]{32,32}\\.+"
-				},{
-					"scan_path": "${WINDIR}\\SoftwareDistribution.backup\\",
-					"path": "${WINDIR}\\SoftwareDistribution.backup\\.+"
-				}
+				"${WINDIR}\\System32\\.+.bak"
 			]
 		},{
-			"name": "WD扫描缓存文件",
+			"name": "WD下载的补丁及日志",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows Defender\\Scans\\",
-					"path": "${PROGRAMDATA}\\Microsoft\\Windows Defender\\Scans\\.+"
-				}
+				"${WINDIR}\\SoftwareDistribution\\Download\\[0-9]{32,32}\\.+",
+				"${WINDIR}\\SoftwareDistribution.backup\\.*",
+				"${WINDIR}\\SoftwareDistribution\\DataStore\\.+"
+			]
+		},{
+			"name": "WD缓存文件",
+			"warning_level": 0,
+			"paths": [
+				"${PROGRAMDATA}\\Microsoft\\Windows Defender\\(Scans|LocalCopy|Network Inspection System\\Support)\\.+"
 			]
 		},{
 			"name": "Prefetch文件",
-			"warning_level": 1,
+			"warning_level": 2,
+			"descript": "清理后会使部分应用打开速度略微变慢,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${WINDIR}\\Prefetch\\",
-					"path": "${WINDIR}\\Prefetch\\.+.pf"
-				}
+				"${WINDIR}\\Prefetch\\.+.pf"
 			]
 		},{
 			"name": "ResCache文件",
 			"warning_level": 1,
 			"paths": [
-				{
-					"scan_path": "${WINDIR}\\rescache\\_merged\\",
-					"path": "${WINDIR}\\rescache\\_merged\\[0-9]+\\[0-9]+.pri"
-				}
+				"${WINDIR}\\rescache\\_merged\\[0-9]+\\[0-9]+.pri"
 			]
 		},{
 			"name": "内存转储文件",
-			"warning_level": 0,
+			"warning_level": 2,
+			"descript": "清理后将无法查看应用崩溃信息,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\CrashDumps\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\CrashDumps\\.+.dmp"
-				},{
-					"scan_path": "${WINDIR}\\System32\\config\\systemprofile\\AppData\\Local\\CrashDumps\\",
-					"path": "${WINDIR}\\System32\\config\\systemprofile\\AppData\\Local\\CrashDumps\\.+.dmp"
-				},{
-					"scan_path": "${PROGRAMDATA}\\Microsoft\\WDF\\",
-					"path": "${PROGRAMDATA}\\Microsoft\\WDF\\.+.dmp"
-				},{
-					"scan_path": "${WINDIR}\\",
-					"path": "${WINDIR}\\MEMORY.DMP",
-					"depth": 2
-				}
+				"${USERPROFILE}\\AppData\\Local\\CrashDumps\\.+.dmp",
+				"${WINDIR}\\System32\\config\\systemprofile\\AppData\\Local\\CrashDumps\\.+.dmp",
+				"${PROGRAMDATA}\\Microsoft\\WDF\\.+.dmp",
+				"${WINDIR}\\MEMORY.DMP"
 			]
 		},{
 			"name": "打开文件历史记录",
-			"warning_level": 1,
+			"warning_level": 2,
+			"descript": "清理后将无法查看文件打开记录,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${APPDATA}\\Microsoft\\Windows\\Recent\\",
-					"path": "${APPDATA}\\Microsoft\\Windows\\Recent\\(AutomaticDestinations\\|CustomDestinations\\)?.+(.lnk|.customDestinations-ms|.automaticDestinations-ms|.temp)"
-				}
+				"${APPDATA}\\Microsoft\\Windows\\Recent\\(AutomaticDestinations\\|CustomDestinations\\)?.+(.lnk|.customDestinations-ms|.automaticDestinations-ms|.temp)"
 			]
 		},{
 			"name": "错误报告文件",
-			"warning_level": 1,
+			"warning_level": 2,
+			"descript": "清理后将无法查看Windows错误报告,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\WER\\LocalReportArchive\\",
-					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\WER\\LocalReportArchive\\.+.zip"
-				}
+				"${PROGRAMDATA}\\Microsoft\\Windows\\WER\\LocalReportArchive\\.+.zip"
 			]
 		},{
 			"name": "Windows日志文件",
 			"warning_level": 1,
 			"paths": [
-				{
-					"scan_path": "${WINDIR}\\Logs\\",
-					"path": "${WINDIR}\\Logs\\.+"
-				},{
-					"scan_path": "${WINDIR}\\System32\\Logs\\",
-					"path": "${WINDIR}\\System32\\Logs\\.+"
-				}
+				"${WINDIR}\\Logs\\.+",
+				"${WINDIR}\\System32\\Logs\\.+"
 			]
 		},{
 			"name": "Windows沙盒文件",
 			"warning_level": 4,
+			"descript": "清理后将清除所有沙盒数据,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\Dumps\\",
-					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\Dumps\\.+"
-				},{
-					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\BaseImages\\",
-					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\BaseImages\\[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}\\.+(\\Snapshot\\)?.vhdx"
-				},{
-					"scan_path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\PortableBaseLayer\\",
-					"path": "${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\PortableBaseLayer\\.+.vhdx"
-				}
+				"${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\Dumps\\.+",
+				"${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\BaseImages\\[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}\\.+(\\Snapshot\\)?.vhdx",
+				"${PROGRAMDATA}\\Microsoft\\Windows\\Containers\\PortableBaseLayer\\.+.vhdx"
 			]
 		},{
 			"name": "Explorer图标缓存数据库",
-			"warning_level": 2,
+			"warning_level": 1,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\.+.db+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\ThumbCacheToDelete\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\ThumbCacheToDelete\\.+.tmp"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\.+.db",
+				"${USERPROFILE}\\AppData\\Local\\Microsoft\\Windows\\Explorer\\(ThumbCacheToDelete|IconCacheToDelete)\\.+.tmp"
 			]
 		},{
 			"name": "回收站",
 			"warning_level": 4,
+			"descript": "清理后将无法恢复回收站中的文件,是否清理?",
 			"paths": [
-				{
-					"scan_path": "${SYSTEMDRIVE}\\$RECYCLE.BIN\\",
-					"path": "${SYSTEMDRIVE}\\$RECYCLE.BIN\\.+"
-				}
+				"${SYSTEMDRIVE}\\$RECYCLE.BIN\\.+"
+			]
+		},{
+			"name": "UWP缓存",
+			"warning_level": 0,
+			"paths": [
+				"${USERPROFILE}\\AppData\\Local\\Packages\\.+\\(AC\\AppCache|AC\\Temp|AppData\\CacheStorage|LocalCache|TempState).+"
+			]
+		},{
+			"name": "UWP日志",
+			"warning_level": 2,
+			"descript": "此规则有可能会误清理某些文本文件,是否清理?",
+			"paths": [
+				"${USERPROFILE}\\AppData\\Local\\Packages\\.+\\.+(\\.log|\\.txt).*"
+			]
+		},{
+			"name": "驱动日志",
+			"warning_level": 0,
+			"paths": [
+				"${PROGRAMDATA}\\.+\\.log(_backup[0-9])?"
+			]
+		},{
+			"name": "msi安装日志",
+			"warning_level": 1,
+			"paths": [
+				"${WINDIR}\\appcompat\\Programs\\Install\\INSTALL_[0-9|a-f]{4,4}_[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}.txt"
 			]
 		}
 	]

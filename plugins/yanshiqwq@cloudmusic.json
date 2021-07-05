@@ -12,61 +12,36 @@
 			"name": "网易云广告缓存",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\.+\\.mdat"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\.+\\\.mdat"
 			]
 		},{
 			"name": "网易云在线歌曲缓存",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\.+"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\.+"
 			]
 		},{
 			"name": "网易云DMP文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\.+\\.dmp"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\.+\\\.dmp"
 			]
 		},{
 			"name": "网易云日志",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\.+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\.+.log$"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\.+",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\.+.log$"
 			]
 		},{
 			"name": "网易云内置浏览器缓存",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?data_[\\d]+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\f_[\\d|a-f]{6,6}"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\file\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\file\\.+"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?data_[0-9]+",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\f_[0-9|a-f]{6,6}",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+",
+				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\file\\.+"
 			]
 		}
 	]

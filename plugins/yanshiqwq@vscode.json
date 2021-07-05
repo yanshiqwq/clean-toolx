@@ -13,34 +13,18 @@
 			"name": "VSCodeª∫¥Ê",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${APPDATA}\\Code\\Cache\\",
-					"path": "${APPDATA}\\Code\\Cache\\.+"
-				},{
-					"scan_path": "${APPDATA}\\Code\\CachedData\\",
-					"path": "${APPDATA}\\Code\\CachedData\\.+"
-				},{
-					"scan_path": "${APPDATA}\\Code\\CachedExtensions\\",
-					"path": "${APPDATA}\\Code\\CachedExtensions\\.+"
-				},{
-					"scan_path": "${APPDATA}\\Code\\CachedExtensionsVSIXs\\",
-					"path": "${APPDATA}\\Code\\CachedExtensionsVSIXs\\.+"
-				},{
-					"scan_path": "${APPDATA}\\Code\\Code Cache\\",
-					"path": "${APPDATA}\\Code\\Code Cache\\.+"
-				},{
-					"scan_path": "${APPDATA}\\Code\\GPUCache\\",
-					"path": "${APPDATA}\\Code\\GPUCache\\.+"
-				}
+				"${APPDATA}\\Code\\Cache\\.+",
+				"${APPDATA}\\Code\\CachedData\\.+",
+				"${APPDATA}\\Code\\CachedExtensions\\.+",
+				"${APPDATA}\\Code\\CachedExtensionsVSIXs\\.+",
+				"${APPDATA}\\Code\\Code Cache\\.+",
+				"${APPDATA}\\Code\\GPUCache\\.+"
 			]
 		},{
 			"name": "VSCode»’÷æ",
 			"warning_level": 1,
 			"paths": [
-				{
-					"scan_path": "${APPDATA}\\Code\\logs\\",
-					"path": "${APPDATA}\\Code\\logs\\.+"
-				}
+				"${APPDATA}\\Code\\logs\\.+"
 			]
 		}
 	]

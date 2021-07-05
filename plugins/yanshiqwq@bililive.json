@@ -12,25 +12,15 @@
 			"name": "B站投稿工具缓存",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\url_cache\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\url_cache\\.+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\\\d+\\avatar.jpg"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\Browser Cache \\d+\\Vistied links"
-				}
+				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\url_cache\\.+",
+				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\[0-9]+\\avatar.jpg",
+				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\Browser Cache\[0-9]+\\Vistied links"
 			]
 		},{
 			"name": "B站投稿工具日志",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\bililive_.*debug.log"
-				}
+				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\bililive_.*debug\.log"
 			]
 		}
 	]

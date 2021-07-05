@@ -1,0 +1,16 @@
+{
+	"name": "联想电脑管家清理",
+	"author": "延时qwq",
+	"version_name": "v1.3",
+	"version_code": 4,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "设备指标插件清理",
+			"warning_level": 0,
+			"paths": [
+				"${USERPROFILE}\\AppData\\Local\\lenovo\\ImController\\PluginData\\LenovoDeviceMetricsPlugin\\(AppUsageMonitor|ChinaCacheData)\\.+"
+			]
+		}
+	]
+}

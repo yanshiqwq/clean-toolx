@@ -12,65 +12,34 @@
 			"name": "QQÁÄÌì»º´æÊý¾Ý¿â",
 			"warning_level": 2,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
-					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\.+db",
-					"depth": 3
-				}
+				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\.+db"
 			]
 		},{
 			"name": "QQÍ¼Æ¬»º´æ",
 			"warning_level": 2,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
-					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Image",
-					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Video)\\.+"
-					]
-				}
+				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Image\\.+"
 			]
 		},{
 			"name": "QQÊÓÆµ»º´æ",
 			"warning_level": 2,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
-					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Video",
-					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Image)\\.+"
-					]
-				}
+				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\Video\\.+"
 			]
 		},{
 			"name": "QQ»º´æ",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
-					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+",
-					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|FileRecv|Image|Video)\\.+"
-					]
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\STemp\\",
-					"path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\STemp\\.+"
-				},{
-					"scan_path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\webkit_cache\\",
-					"path": "${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\webkit_cache\\.+"
-				}
+				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+",
+				"${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\(STemp|AuTemp|webkit_cache|SNS|QQMW|PushHead|QQApp|HotFriendInfoRes|QQFace|Misc)\\.+",
+				"${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\.+\.cache",
+				"${USERPROFILE}\\AppData\\Roaming\\Tencent\\(QQTempSys|QQPCMGR|TBS|beacon)\\.+"
 			]
 		},{
-			"name": "QQÏÂÔØÄ¿Â¼",
-			"warning_level": 5,
+			"name": "QQ¾É°æ²ÐÁôÎÄ¼þ",
+			"warning_level": 1,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\Documents\\Tencent Files\\",
-					"path": "${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\FileRecv",
-					"excludes": [
-						"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Audio|Video|Image)\\.+"
-					]
-				}
+				"${PROGRAMFILES(X86)}\\Tencent\\QQ\\Resource\.[0-9]+\.[0-9]+\.[0-9]+\\.+"
 			]
 		}
 	]

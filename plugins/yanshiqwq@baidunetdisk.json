@@ -1,0 +1,22 @@
+{
+	"name": "百度网盘清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"platform": "windows",
+	"rules": [
+		{
+			"name": "百度网盘更新包",
+			"warning_level": 0,
+			"paths": [
+				"${APPDATA}\\Baidu\\BaiduNetdisk\\AutoUpdate\\Download\\MainApp\\(new)?fullpackage_[0-9]+\.cab"
+			]
+		},{
+			"name": "百度网盘日志",
+			"warning_level": 1,
+			"paths": [
+				"${APPDATA}\\BaiduYunGuanjia\\logs\\XLog_[0-9]{14,14}_[0-9]{1,5}(_[0-9]+)?\.txt"
+			]
+		}
+	]
+}

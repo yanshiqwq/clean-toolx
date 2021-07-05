@@ -1,6 +1,23 @@
 import logging, json, os, sys, platform, re, time, stat
 from os.path import getsize
 try:
+	def replace(text):
+		match = re.findall('\$\{.+?\}', text)
+		if match != None:
+			for varible in match:
+				return text.replace(varible, os.environ[varible[2: -1]].replace("\\", "\\\\"))
+		#match = re.findall('#\{HKCR}\{.+?,.+?\}', text)
+		#if match != None:
+		#	for varible in match:
+		#		return text.replace(varible, os.environ[varible[2: -1]])
+		#match = re.findall('#\{HKCU}\{.+?,.+?\}', text)
+		#if match != None:
+		#	for varible in match:
+		#		return text.replace(varible, os.environ[varible[2: -1]])
+		#match = re.findall('#\{HKLM}\{.+?,.+?\}', text)
+		#if match != None:
+		#	for varible in match:
+		#		return text.replace(varible, os.environ[varible[2: -1]])
 	def convert_size(size):
 		try:
 			if size >= 1000:
@@ -29,11 +46,7 @@ try:
 	logging.info("	#==================================#")
 	logging.info("")
 	if os.listdir("plugins"):
-		clean_count = 0
-		clean_size = 0
-		total_size = 0
-		total_count = 0
-		plugin_count = 0
+		clean_count, clean_size, total_size, total_count, plugin_count = 0, 0, 0, 0, 0
 		for root,dirs,files in os.walk("plugins"):
 			for file in files:
 				if os.path.splitext(file)[-1]=='.json':
@@ -50,6 +63,7 @@ try:
 				if os.path.splitext(file)[-1] == ".json":
 					try:
 						plugin_data = open("plugins/" + file).read()
+						plugin_data = plugin_data.replace("\\", "\\\\")
 					except UnicodeDecodeError as e:
 						logging.error("插件解析失败!请将插件编码设为GB2312(" + file + ").")
 						logging.error("错误信息: " + str(e))
@@ -72,7 +86,7 @@ try:
 					continue
 				if "requires" in plugin_config:
 					for path in plugin_config["requires"]:
-						match = re.findall('\$\{.+?\}', path)
+						match = re.findall(r'\$\{.+?\}', path)
 						if match != None:
 							for varible in match:
 								path = path.replace(varible, os.environ[varible[2: -1]])
@@ -82,66 +96,30 @@ try:
 				if continue_signal == True:
 					continue
 				for rule in plugin_config["rules"]:
+					continue_signal = False
 					rule_size = 0
 					logging.info("")
 					logging.info("正在索引 " + rule["name"] + " ...")
 					path_list = []
+					if "requires" in rule:
+						for path in rule["requires"]:
+							if os.path.exists(replace(path)) == False:
+								logging.info("未检测到文件.")
+								continue_signal = True
+					if continue_signal == True:
+						continue
 					if "paths" in rule:
-						for paths in rule["paths"]:
-							path = paths["path"]
-							scan = paths["scan_path"]
-							if "depth" in paths:
-								depth = paths["depth"]
-							else:
-								depth = 1919810
-							if "excludes" in paths:
-								excludes = []
-								for exclude in paths["excludes"]:
-									match = re.findall('\$\{.+?\}', exclude)
-									if match != None:
-										for varible in match:
-											excludes.append(exclude.replace(varible, os.environ[varible[2: -1]]))
-							else:
-								excludes = []
-							match = re.findall('\$\{.+?\}', scan)
-							if match != None:
-								for varible in match:
-									scan = scan.replace(varible, os.environ[varible[2: -1]])
-							match = re.findall('\$\{.+?\}', path)
-							if match != None:
-								for varible in match:
-									path = path.replace(varible, os.environ[varible[2: -1]])
+						for path in rule["paths"]:
+							path = replace(path)
 							logging.info("正在扫描 " + path + " ...")
-							depth_count = 1
-							for root,dirs,names in os.walk(scan):
-								continue_signal = False
-								if depth_count == depth:
-									break
-								logging.debug("root = " + root)
-								for exclude in excludes:
-									logging.debug("exclude = " + exclude)
-									match = re.match(exclude.replace("\\","\\\\"), root)
-									if match != None:
-										continue_signal = True
-										break
-								if continue_signal == True:
+							for path in os.popen("es /a-d -r \"" + path.replace("|", "^|") + "\"").readlines():
+								path = path[: -1]
+								try:
+									total_size = total_size + getsize(path)
+									rule_size = rule_size + getsize(path)
+								except:
 									continue
-								for filename in names:
-									try:
-										os.chmod(filename, stat.S_IWRITE)
-										os.chmod(filename, stat.S_IRWXG)
-									except FileNotFoundError:
-										pass
-									match = re.match(path.replace("\\","\\\\"), os.path.join(root,filename))
-									if match != None:
-										try:
-											getsize(os.path.join(root,filename))
-										except FileNotFoundError as e:
-											continue
-										path_list.append(os.path.join(root,filename))
-										total_size = total_size + getsize(os.path.join(root,filename))
-										rule_size = rule_size + getsize(os.path.join(root,filename))
-								depth_count += 1
+								path_list.append(path)
 					else:
 						logging.error("插件配置有误!请检查插件完整性(" + file + ").")
 					file_count = len(path_list)
@@ -154,7 +132,10 @@ try:
 					count = 0
 					for file_path in path_list:
 						try:
-							filesize = convert_size(getsize(file_path))
+							if os.path.isfile(file_path):
+								filesize = convert_size(getsize(file_path))
+							else:
+								filesize = convert_size(0)
 							logging.info("\t [" + filesize + "]\t" + file_path)
 							count = count + 1
 						except FileNotFoundError:
@@ -166,10 +147,16 @@ try:
 					if rule["warning_level"] == 0:
 						pass
 					elif rule["warning_level"] == 1:
-						input("[PID #" + str(str(os.getpid())) + "] [INFO] 按[Enter]开始清理...")
+						text = "[PID #" + str(str(os.getpid())) + "] [INFO] 按[Enter]开始清理..."
+						if "descript" in rule:
+							text = "[PID #" + str(str(os.getpid())) + "] [INFO] " + rule["descript"]
+						input(text)
 					elif rule["warning_level"] == 2:
+						text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会影响您的正常使用,确定继续吗?[Y/n]"
+						if "descript" in rule:
+							text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[Y/n]"
 						while True:
-							answer = input("[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会影响您的正常使用,确定继续吗?[Y/n]")
+							answer = input(text)
 							if answer.upper() == "N":
 								break
 							elif answer.upper() == "Y":
@@ -180,8 +167,11 @@ try:
 						if answer.upper() == "N":
 							continue
 					elif rule["warning_level"] == 3:
+						text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则会影响您的正常使用,确定继续吗?[y/N]"
+						if "descript" in rule:
+							text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[y/N]"
 						while True:
-							answer = input("[PID #" + str(os.getpid()) + "] [WARN] 这条规则会影响您的正常使用,确定继续吗?[y/N]")
+							answer = input(text)
 							if answer.upper() == "N":
 								break
 							elif answer.upper() == "Y":
@@ -193,7 +183,10 @@ try:
 							continue
 					elif rule["warning_level"] == 4:
 						while True:
-							answer = input("[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会损坏/删除您的数据,确定继续吗?[y/N]")
+							text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会损坏/删除您的数据,确定继续吗?[y/N]"
+							if "descript" in rule:
+								text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[y/N]"
+							answer = input(text)
 							if answer.upper() == "N":
 								break
 							elif answer.upper() == "Y":
@@ -205,7 +198,10 @@ try:
 							continue
 					elif rule["warning_level"] == 5:
 						while True:
-							answer = input("[PID #" + str(os.getpid()) + "] [WARN] 这条规则会损坏/删除您的重要数据,确定继续吗?[y/N]")
+							text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则会损坏/删除您的重要数据,确定继续吗?[y/N]"
+							if "descript" in rule:
+								text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[y/N]"
+							answer = input(text)
 							if answer.upper() == "N":
 								break
 							elif answer.upper() == "Y":
@@ -220,12 +216,14 @@ try:
 					for file in path_list:
 						try:
 							filesize = getsize(file)
+						except:
+							filesize = convert_size(0)
+						try:
 							os.remove(file)
 						except PermissionError as e:
-							if "[WinError 5]" in str(e):
-								logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
-							if "[WinError 32]" in str(e):
-								logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
+							logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t拒绝访问 - " + file)
+						except FileNotFoundError as e:
+							logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t删除文件 - " + file)
 						else:
 							logging.info("\t [" + str(count) + "/" + str(file_count) + "] \t删除文件 - " + file)
 							clean_size = clean_size + filesize
@@ -244,7 +242,7 @@ try:
 		logging.error("未检测到任何插件!")
 		sys.exit()
 except BaseException as e:
-	logging.error(e)
+	logging.error(e.qwq)
 	if isinstance(e, KeyboardInterrupt):
 		logging.info("")
 		logging.error("进程终止!")

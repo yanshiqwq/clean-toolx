@@ -13,16 +13,9 @@
 			"name": "BlockBench»º´æ",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${APPDATA}\\BlockBench\\Cache\\",
-					"path": "${APPDATA}\\BlockBench\\Cache\\.+"
-				},{
-					"scan_path": "${APPDATA}\\BlockBench\\Code Cache\\",
-					"path": "${APPDATA}\\BlockBench\\BlockBench Cache\\.+"
-				},{
-					"scan_path": "${APPDATA}\\BlockBench\\GPUCache\\",
-					"path": "${APPDATA}\\BlockBench\\GPUCache\\.+"
-				}
+				"${APPDATA}\\BlockBench\\Cache\\.+",
+				"${APPDATA}\\BlockBench\\BlockBench Cache\\.+",
+				"${APPDATA}\\BlockBench\\GPUCache\\.+"
 			]
 		}
 	]

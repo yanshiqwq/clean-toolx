@@ -3,7 +3,6 @@
 	"author": "延时qwq",
 	"version_name": "v1.0",
 	"version_code": 1,
-	"min_version": 1,
 	"platform": "windows",
 	"requires": [
 		"${PROGRAMFILES(X86)}\\Netease\\MailMaster\\Application\\mailmaster.exe"
@@ -13,28 +12,19 @@
 			"name": "网易邮箱大师dump文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\dumps\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\dumps\\.+"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\dumps\\.+"
 			]
 		},{
 			"name": "网易邮箱大师日志文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\logs\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\logs\\.+"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\logs\\.+"
 			]
 		},{
 			"name": "网易邮箱大师缓存文件",
 			"warning_level": 0,
 			"paths": [
-				{
-					"scan_path": "${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\web\\cache\\",
-					"path": "${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\web\\cache\\.+"
-				}
+				"${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\web\\cache\\.+"
 			]
 		}
 	]
