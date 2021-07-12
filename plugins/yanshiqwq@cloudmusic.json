@@ -12,36 +12,36 @@
 			"name": "网易云广告缓存",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\ad\\.+\\\.mdat"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\ad\\.+\\\.mdat"
 			]
 		},{
 			"name": "网易云在线歌曲缓存",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache\\.+"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\Cache\\Cache\\.+"
 			]
 		},{
 			"name": "网易云DMP文件",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\dumps\\.+\\\.dmp"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\dumps\\.+\\\.dmp"
 			]
 		},{
 			"name": "网易云日志",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\Log\\.+",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\.+.log$"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\Log\\.+",
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\.+.log$"
 			]
 		},{
 			"name": "网易云内置浏览器缓存",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?data_[0-9]+",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\f_[0-9|a-f]{6,6}",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+",
-				"${USERPROFILE}\\AppData\\Local\\Netease\\CloudMusic\\webdata\\file\\.+"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?data_[0-9]+",
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webapp\\f_[0-9|a-f]{6,6}",
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index",
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+",
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webdata\\file\\.+"
 			]
 		}
 	]

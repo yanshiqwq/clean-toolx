@@ -10,9 +10,10 @@
 	"rules": [
 		{
 			"name": "QQ聊天缓存数据库",
-			"warning_level": 2,
+			"descript": "这条规则可能会导致QQ重新加载所有消息和头像,是否清理?",
+			"warning_level": 3,
 			"paths": [
-				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\.+db"
+				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\.+\.db$"
 			]
 		},{
 			"name": "QQ图片缓存",
@@ -31,9 +32,9 @@
 			"warning_level": 0,
 			"paths": [
 				"${USERPROFILE}\\Documents\\Tencent Files\\[0-9]+\\(Ads|AppWebCache|CloudRes|Wireless|SelCreateGroupHead|VasscUpdate\\VasHead)\\.+",
-				"${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\(STemp|AuTemp|webkit_cache|SNS|QQMW|PushHead|QQApp|HotFriendInfoRes|QQFace|Misc)\\.+",
-				"${USERPROFILE}\\AppData\\Roaming\\Tencent\\QQ\\.+\.cache",
-				"${USERPROFILE}\\AppData\\Roaming\\Tencent\\(QQTempSys|QQPCMGR|TBS|beacon)\\.+"
+				"${APPDATA}\\Tencent\\QQ\\(STemp|AuTemp|webkit_cache|SNS|QQMW|PushHead|QQApp|HotFriendInfoRes|QQFace|Misc)\\.+",
+				"${APPDATA}\\Tencent\\QQ\\.+?\.cache$",
+				"${APPDATA}\\Tencent\\(QQTempSys|QQPCMGR|TBS|beacon)\\.+"
 			]
 		},{
 			"name": "QQ旧版残留文件",

@@ -38,7 +38,7 @@ try:
 			input()
 			sys.exit()
 		return total_size
-	logging.basicConfig(level = logging.INFO,format = '[PID #%(process)d] [%(levelname)s] %(message)s')
+	logging.basicConfig(level = logging.INFO, format = '[%(asctime)s %(levelname)s] %(message)s', datefmt = '%H:%M:%S')
 	logger = logging.getLogger(__name__)
 	logging.info("")
 	logging.info("	#==================================#")
@@ -147,14 +147,14 @@ try:
 					if rule["warning_level"] == 0:
 						pass
 					elif rule["warning_level"] == 1:
-						text = "[PID #" + str(str(os.getpid())) + "] [INFO] 按[Enter]开始清理..."
+						text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " INFO] 按[Enter]开始清理..."
 						if "descript" in rule:
-							text = "[PID #" + str(str(os.getpid())) + "] [INFO] " + rule["descript"]
+							text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " INFO] " + rule["descript"]
 						input(text)
 					elif rule["warning_level"] == 2:
-						text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会影响您的正常使用,确定继续吗?[Y/n]"
+						text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] 这条规则可能会影响您的正常使用,确定继续吗?[Y/n]"
 						if "descript" in rule:
-							text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[Y/n]"
+							text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] " + rule["descript"] + "[Y/n]"
 						while True:
 							answer = input(text)
 							if answer.upper() == "N":
@@ -167,9 +167,9 @@ try:
 						if answer.upper() == "N":
 							continue
 					elif rule["warning_level"] == 3:
-						text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则会影响您的正常使用,确定继续吗?[y/N]"
+						text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] 这条规则会影响您的正常使用,确定继续吗?[y/N]"
 						if "descript" in rule:
-							text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[y/N]"
+							text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] " + rule["descript"] + "[y/N]"
 						while True:
 							answer = input(text)
 							if answer.upper() == "N":
@@ -183,9 +183,9 @@ try:
 							continue
 					elif rule["warning_level"] == 4:
 						while True:
-							text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则可能会损坏/删除您的数据,确定继续吗?[y/N]"
+							text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] 这条规则可能会损坏/删除您的数据,确定继续吗?[y/N]"
 							if "descript" in rule:
-								text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[y/N]"
+								text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] " + rule["descript"] + "[y/N]"
 							answer = input(text)
 							if answer.upper() == "N":
 								break
@@ -198,9 +198,9 @@ try:
 							continue
 					elif rule["warning_level"] == 5:
 						while True:
-							text = "[PID #" + str(os.getpid()) + "] [WARN] 这条规则会损坏/删除您的重要数据,确定继续吗?[y/N]"
+							text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] 这条规则会损坏/删除您的重要数据,确定继续吗?[y/N]"
 							if "descript" in rule:
-								text = "[PID #" + str(str(os.getpid())) + "] [WARN] " + rule["descript"] + "[y/N]"
+								text = "[" + time.strftime("%H:%M:%S", time.localtime()) + " WARN] " + rule["descript"] + "[y/N]"
 							answer = input(text)
 							if answer.upper() == "N":
 								break

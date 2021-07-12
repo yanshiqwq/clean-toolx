@@ -9,7 +9,7 @@
 			"name": "设备指标插件清理",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\lenovo\\ImController\\PluginData\\LenovoDeviceMetricsPlugin\\(AppUsageMonitor|ChinaCacheData)\\.+"
+				"${LOCALAPPDATA}\\lenovo\\ImController\\PluginData\\LenovoDeviceMetricsPlugin\\(AppUsageMonitor|ChinaCacheData)\\.+"
 			]
 		}
 	]

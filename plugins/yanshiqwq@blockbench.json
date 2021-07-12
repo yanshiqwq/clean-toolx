@@ -6,7 +6,7 @@
 	"min_version": 1,
 	"platform": "windows",
 	"requires": [
-		"${USERPROFILE}\\AppData\\Local\\Programs\\BlockBench\\BlockBench.exe"
+		"${LOCALAPPDATA}\\Programs\\BlockBench\\BlockBench.exe"
 	],
 	"rules": [
 		{

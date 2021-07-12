@@ -13,16 +13,32 @@
 			"name": "Œ¢–≈ƒ⁄÷√‰Ø¿¿∆˜ª∫¥Ê",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\xwalk\\(GPUCache\\)?(data_[0-9]|index)+",
-				"${USERPROFILE}\\AppData\\Local\\xwalk\\f_[0-9|a-f]{6,6}"
+				"${LOCALAPPDATA}\\xwalk\\(GPUCache\\)?(data_[0-9]|index)+",
+				"${LOCALAPPDATA}\\xwalk\\f_[0-9|a-f]{6,6}"
 			]
 		},{
 			"name": "Œ¢–≈ª∫¥Ê",
 			"warning_level": 1,
 			"paths": [
 				"${USERPROFILE}\\Documents\\WeChat Files\\[0-9|a-f|A-F]{32,32}(_t|_t[0-9]|.[0-9])?(\.dat)?",
+				"${USERPROFILE}\\Documents\\WeChat Files\\[0-9|a-f]{8,8}\.ini[0-9]{10,10}",
 				"${USERPROFILE}\\Documents\\WeChat Files\\[0-9|a-f]{7,8}_([0-9]+_)?thumb\.dat",
-				"${USERPROFILE}\\Documents\\WeChat Files\\(_APP_\.wxapkg|~\$cache[0-9]|log[0-9])"
+				"${USERPROFILE}\\Documents\\WeChat Files\\_APP_\.wxapkg",
+				"${USERPROFILE}\\Documents\\WeChat Files\\Applet\\wx[0-9|a-f]{16,16}\\[0-9]+\\_APP_\.wxapkg",
+				"${USERPROFILE}\\Documents\\WeChat Files\\Applet\\publicLib\\[0-9]+\\clientPublicLib\.wxapkg",
+				"${USERPROFILE}\\Documents\\WeChat Files\\~\$cache[0-9]",
+				"${USERPROFILE}\\Documents\\WeChat Files\\log[0-9]",
+				"${USERPROFILE}\\Documents\\WeChat Files\\.+\.bakdb",
+				"${USERPROFILE}\\Documents\\WeChat Files\\All Users\\[0-9|a-f]{32,32}\.jpg"
+			]
+		},{
+			"name": "Œ¢–≈”√ªßª∫¥Ê",
+			"warning_level": 1,
+			"paths": [
+				"${USERPROFILE}\\Documents\\WeChat Files\\wxid_[0-9|a-z]+\\Msg\\Multi\\bak\\.+\.bakdb",
+				"${USERPROFILE}\\Documents\\WeChat Files\\wxid_[0-9|a-z]+\\ResUpdateV2\\[0-9|_]+\.zip",
+				"${USERPROFILE}\\Documents\\WeChat Files\\wxid_[0-9|a-z]+\\config\\[0-9|a-f]{8,8}\.ini[0-9]{10,10}",
+				"${USERPROFILE}\\Documents\\WeChat Files\\wxid_[0-9|a-z]+\\FileStorage\\Cache\\[0-9]{4,}-[0-9]{2,2}\\[0-9|a-f]{32,32}(_t)?\.jpg([0-9|a-f]{32,32})?"
 			]
 		}
 	]

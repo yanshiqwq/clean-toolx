@@ -5,32 +5,33 @@
 	"version_code": 1,
 	"platform": "windows",
 	"requires": [
-		"${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\OneDrive.exe"
+		"${LOCALAPPDATA}\\Microsoft\\OneDrive\\OneDrive.exe"
 	],
 	"rules": [
 		{
 			"name": "OneDrive日志",
 			"warning_level": 1,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\.+"
+				"${LOCALAPPDATA}\\Microsoft\\OneDrive\\logs\\.+"
 			]
 		},{
 			"name": "OneDrive旧版残留文件",
-			"warning_level": 1,
+			"descript": "此规则可能导致无法在onedrive内打开网页类设置,是否清理?",
+			"warning_level": 4,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\[0-9]+\.[0-9]{3,3}\.[0-9]{4,4}\.[0-9]{4,4}\\.*"
+				"${LOCALAPPDATA}\\Microsoft\\OneDrive\\[0-9]+\.[0-9]{3,3}\.[0-9]{4,4}\.[0-9]{4,4}\\.*"
 			]
 		},{
 			"name": "OneDrive文件列表缓存",
 			"warning_level": 1,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Microsoft\\OneDrive\\settings\\(Business[0-9]+|Personal)\\[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}\.dat"
+				"${LOCALAPPDATA}\\Microsoft\\OneDrive\\settings\\(Business[0-9]+|Personal)\\[0-9|a-f]{8,8}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{4,4}-[0-9|a-f]{12,12}\.dat"
 			]
 		},{
 			"name": "OneDriveQML缓存",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\OneDrive\\cache\\qmlcache\\[0-9|a-f]{40,40}\.(qmlc|jsc)"
+				"${LOCALAPPDATA}\\OneDrive\\cache\\qmlcache\\[0-9|a-f]{40,40}\.(qmlc|jsc)"
 			]
 		}
 	]

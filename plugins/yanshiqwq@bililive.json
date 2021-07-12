@@ -12,15 +12,15 @@
 			"name": "B站投稿工具缓存",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\url_cache\\.+",
-				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\[0-9]+\\avatar.jpg",
-				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\Browser Cache\[0-9]+\\Vistied links"
+				"${LOCALAPPDATA}\\bililive\\User Data\\url_cache\\.+",
+				"${LOCALAPPDATA}\\bililive\\User Data\\[0-9]+\\avatar.jpg",
+				"${LOCALAPPDATA}\\bililive\\User Data\\Browser Cache\[0-9]+\\Vistied links"
 			]
 		},{
 			"name": "B站投稿工具日志",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\bililive\\User Data\\bililive_.*debug\.log"
+				"${LOCALAPPDATA}\\bililive\\User Data\\bililive_.*debug\.log"
 			]
 		}
 	]

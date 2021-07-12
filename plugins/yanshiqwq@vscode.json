@@ -6,7 +6,7 @@
 	"min_version": 1,
 	"platform": "windows",
 	"requires": [
-		"${USERPROFILE}\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+		"${LOCALAPPDATA}\\Programs\\Microsoft VS Code\\Code.exe"
 	],
 	"rules": [
 		{

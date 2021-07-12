@@ -12,19 +12,19 @@
 			"name": "网易邮箱大师dump文件",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\dumps\\.+"
+				"${LOCALAPPDATA}\\Netease\\MailMaster\\dumps\\.+"
 			]
 		},{
 			"name": "网易邮箱大师日志文件",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\logs\\.+"
+				"${LOCALAPPDATA}\\Netease\\MailMaster\\logs\\.+"
 			]
 		},{
 			"name": "网易邮箱大师缓存文件",
 			"warning_level": 0,
 			"paths": [
-				"${USERPROFILE}\\AppData\\Local\\Netease\\MailMaster\\web\\cache\\.+"
+				"${LOCALAPPDATA}\\Netease\\MailMaster\\web\\cache\\.+"
 			]
 		}
 	]
