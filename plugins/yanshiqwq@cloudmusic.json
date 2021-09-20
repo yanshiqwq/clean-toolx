@@ -12,7 +12,7 @@
 			"name": "网易云广告缓存",
 			"warning_level": 0,
 			"paths": [
-				"${LOCALAPPDATA}\\Netease\\CloudMusic\\ad\\.+\\\.mdat"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\ad\\.+\.mdat"
 			]
 		},{
 			"name": "网易云在线歌曲缓存",
@@ -24,14 +24,14 @@
 			"name": "网易云DMP文件",
 			"warning_level": 0,
 			"paths": [
-				"${LOCALAPPDATA}\\Netease\\CloudMusic\\dumps\\.+\\\.dmp"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\dumps\\.+\.dmp"
 			]
 		},{
 			"name": "网易云日志",
-			"warning_level": 0,
+			"warning_level": 1,
 			"paths": [
 				"${LOCALAPPDATA}\\Netease\\CloudMusic\\Log\\.+",
-				"${LOCALAPPDATA}\\Netease\\CloudMusic\\.+.log$"
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\.+\.log$"
 			]
 		},{
 			"name": "网易云内置浏览器缓存",
@@ -42,6 +42,18 @@
 				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webapp\\(GPUCache\\)?index",
 				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webdata\\lyric\\[0-9]+",
 				"${LOCALAPPDATA}\\Netease\\CloudMusic\\webdata\\file\\.+"
+			]
+		},{
+			"name": "网易云临时文件",
+			"warning_level": 0,
+			"paths": [
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\Temp\\.+"
+			]
+		},{
+			"name": "网易云更新安装包",
+			"warning_level": 1,
+			"paths": [
+				"${LOCALAPPDATA}\\Netease\\CloudMusic\\update\\.+"
 			]
 		}
 	]

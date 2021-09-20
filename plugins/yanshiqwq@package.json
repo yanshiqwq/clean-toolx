@@ -1,0 +1,45 @@
+{
+	"name": "包管理程序清理",
+	"author": "延时qwq",
+	"version_name": "v1.0",
+	"version_code": 1,
+	"platform": "windows",
+	"requires": [
+		"${APPDATA}\\npm\\"
+	],
+	"rules": [
+		{
+			"name": "npm日志",
+			"descript": "清理后将无法查看npm日志,是否清理?",
+			"warning_level": 3,
+			"paths": [
+				"${APPDATA}\\npm-cache\\_logs\\[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}T[0-9]{2,2}_[0-9]{2,2}_[0-9]{3,3}Z-debug\.log"
+			]
+		},{
+			"name": "npm包文件缓存",
+			"warning_level": 1,
+			"paths": [
+				"${APPDATA}\\npm-cache\\_cacache\\content-v[0-9]+\\sha(1|512)\\.+"
+			]
+		},{
+			"name": "npm包索引文件缓存",
+			"warning_level": 1,
+			"paths": [
+				"${APPDATA}\\npm-cache\\_cacache\\index-v[0-9]+\\.+"
+			]
+		},{
+			"name": "pip包文件缓存",
+			"warning_level": 1,
+			"paths": [
+				"${LOCALAPPDATA}\\pip\\cache\\wheels\\.+",
+				"${LOCALAPPDATA}\\pip\\cache\\http\\.+"
+			]
+		},{
+			"name": "pip检测更新缓存",
+			"warning_level": 1,
+			"paths": [
+				"${LOCALAPPDATA}\\pip\\cache\\selfcheck\\.+"
+			]
+		}
+	]
+}

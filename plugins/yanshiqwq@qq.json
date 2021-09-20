@@ -37,6 +37,13 @@
 				"${APPDATA}\\Tencent\\(QQTempSys|QQPCMGR|TBS|beacon)\\.+"
 			]
 		},{
+			"name": "QQ日志",
+			"warning_level": 1,
+			"paths": [
+				"${APPDATA}\\Tencent\\QQ\\Logs\\.+\.(tlg|log)",
+				"${WINDIR}\\SysWOW64\\config\\systemprofile\\AppData\\Roaming\\Tencent\\Logs\\QQProtect.tlg(\.[0-9]+)?"
+			]
+		},{
 			"name": "QQ旧版残留文件",
 			"warning_level": 1,
 			"paths": [

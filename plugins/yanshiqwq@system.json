@@ -34,7 +34,7 @@
 				"${WINDIR}\\System32\\winevt\\.+"
 			]
 		},{
-			"name": "AppData目录临时文件",
+			"name": "临时文件",
 			"warning_level": 0,
 			"paths": [
 				"${TEMP}\\.+",
@@ -78,19 +78,17 @@
 				"${PROGRAMDATA}\\Package Cache\\.+"
 			]
 		},{
+			"name": "CryptoAPI证书缓存",
+			"warning_level": 1,
+			"paths": [
+				"${USERPROFILE}\\AppData\\LocalLow\\Microsoft\\CryptnetUrlCache\\Content\\.+"
+			]
+		},{
 			"name": "Installer基线缓存",
 			"warning_level": 4,
 			"descript": "清理后部分应用升级、修复、增添组件需要联网或者备好安装镜像,是否清理?",
 			"paths": [
 				"${SYSTEMROOT}\\Installer\\\$PatchCache\$\\.+"
-			]
-		},{
-			"name": "Windows更新安装记录",
-			"warning_level": 2,
-			"descript": "清理后更新历史记录将被清空,是否清理?",
-			"paths": [
-				"${LOCALAPPDATA}\\Package Cache\\.+",
-				"${PROGRAMDATA}\\Package Cache\\.+"
 			]
 		},{
 			"name": "本地设置临时文件",
@@ -119,15 +117,21 @@
 				"${WINDIR}\\System32\\.+?\.bak$"
 			]
 		},{
-			"name": "WD下载的补丁及日志",
+			"name": "WD下载的补丁",
 			"warning_level": 0,
 			"paths": [
 				"${WINDIR}\\SoftwareDistribution\\Download\\[0-9|a-f]{32,32}\\.+",
 				"${WINDIR}\\SoftwareDistribution\\Download\\[0-9|a-f]{40,40}",
 				"${WINDIR}\\SoftwareDistribution\\Download\\Install\\.+",
 				"${WINDIR}\\SoftwareDistribution\\Download\\SharedFileCache\\.+",
-				"${WINDIR}\\SoftwareDistribution.backup\\.*",
+				"${WINDIR}\\SoftwareDistribution.backup\\.*"
+			]
+		},{
+			"name": "WD日志",
+			"warning_level": 0,
+			"paths": [
 				"${WINDIR}\\SoftwareDistribution\\DataStore\\.+",
+				"${WINDIR}\\SoftwareDistribution\\SLS\\.+",
 				"${WINDIR}\\SoftwareDistribution\\ReportingEvents.log"
 			]
 		},{
@@ -262,7 +266,7 @@
 				"${PROGRAMDATA}\\.*\.log(_backup[0-9]|\.bak)?$"
 			]
 		},{
-			"name": "NV驱动缓存",
+			"name": "NVIDIA驱动缓存",
 			"warning_level": 0,
 			"requires": [
 				"${PROGRAMDATA}\\NVIDIA Corporation\\"
